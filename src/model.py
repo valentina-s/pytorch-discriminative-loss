@@ -101,7 +101,7 @@ class UNet(nn.Module):
         self.up3 = up(256, 64)
         self.up4 = up(128, 64)
         self.sem_out = outconv(64, out_ch)
-        self.ins_out = outconv(64, 16)
+        # self.ins_out = outconv(64, 16)
 
     def forward(self, x):
         x1 = self.inc(x)
@@ -114,5 +114,5 @@ class UNet(nn.Module):
         x = self.up3(x, x2)
         x = self.up4(x, x1)
         sem = self.sem_out(x)
-        ins = self.ins_out(x)
-        return sem, ins
+        #ins = self.ins_out(x)
+        return sem#, ins
